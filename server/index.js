@@ -2,12 +2,14 @@ require('dotenv').config()
 const express = require('express')
 const sequelize = require('./db')
 //const {Sequelize} = require('sequelize')
+//const config = require("config")//?
 const models = require('./models/models')
 const cors = require('cors')
 const router = require('./routes/index')
 const fileupload = require('express-fileupload')
 const path = require('path')
 const errorHandler = require('./middleware/ErrorMiddleware')
+
 
 const PORT = process.env.PORT || 5000
 
@@ -26,7 +28,7 @@ app.use(errorHandler)//end point!
 const start = async () => {
   try {
    await sequelize.authenticate()
-   await sequelize.sync()
+   //await sequelize.sync()
 //sequelize.Device.sync({alter: true})
 .then(() => console.log('db Connected.'))
 

@@ -4,13 +4,17 @@ const {Device} = require('../models/models')
 
 class CartController {
   async create(req, res, next){
-  const {name, price, count, deviceId, img} = req.body
-  console.log(req.body);
-try{
+  let {name, price, count, deviceId, img} = req.body
+try{console.log('count',count);
    const isDevice = await BasketDevice.findOne(
     {where: {deviceId}},)
-   if(isDevice){return res.json('exist')}
-   //{return next(ApiError.badRequest('device exist'))}
+   if(isDevice){count ++
+     console.log('count2',count);
+      const device = await BasketDevice.update(
+         {count: count},{where: {deviceId}},)
+         return res.json(device)
+     //res.json('exist')
+   }
    const device = await BasketDevice.create(
    { name, price, count, deviceId, img},)
    return res.json(device)

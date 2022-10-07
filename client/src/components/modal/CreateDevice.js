@@ -52,77 +52,74 @@ const delete_Type = (id = 0)=> {deleteType(id).then(
     data => {console.log(data)})}
 
   return (
-  <Modal show={show} onHide={onHide} size='lg' cantered>
+<Modal show={show} onHide={onHide} size='lg' cantered>
   <Modal.Header closeButton>
     <Modal.Title className='d-flex justify-content-center align-item-center'
           >Add type</Modal.Title>
   </Modal.Header>
-<Modal.Body>
-  <Form>
-    <Dropdown>
-<Dropdown.Toggle>{device.selectedType.name || 'pick type'}</Dropdown.Toggle>
-<Dropdown.Menu>{device.types.map(el =>
-<Dropdown.Item onClick={()=>device.setSelectedType(el)} key={el.id}
+  <Modal.Body>
+    <Form>
+     <Dropdown>
+       <Dropdown.Toggle>{device.selectedType.name || 'pick type'}</Dropdown.Toggle>
+       <Dropdown.Menu>{device.types.map(el =>
+          <Dropdown.Item onClick={()=>device.setSelectedType(el)} key={el.id}
           >{el.name}</Dropdown.Item>
 )}
-</Dropdown.Menu>
-   </Dropdown>
-<Dropdown className='mt-2 mb-2'>
-<Dropdown.Toggle>{device.selectedBrand.name ||'pick brand'}</Dropdown.Toggle>
-<Dropdown.Menu>{device.brands.map(el =>
-<Dropdown.Item onClick={()=>device.setSelectedBrand(el)} key={el.id}
+       </Dropdown.Menu>
+     </Dropdown>
+     <Dropdown className='mt-2 mb-2'>
+       <Dropdown.Toggle>{device.selectedBrand.name ||'pick brand'}</Dropdown.Toggle>
+       <Dropdown.Menu>{device.brands.map(el =>
+       <Dropdown.Item onClick={()=>device.setSelectedBrand(el)} key={el.id}
            >{el.name}</Dropdown.Item>
 )}
-</Dropdown.Menu>
-</Dropdown>
+     </Dropdown.Menu>
+   </Dropdown>
 
-<Form.Control placeholder='enter name' value={name}
+  <Form.Control placeholder='enter name' value={name}
       onChange={e=>setName(e.target.value)}
       />
-<Form.Control className='mt-2 mb-2' type='number'
+  <Form.Control className='mt-2 mb-2' type='number'
       placeholder='enter price' value={price}
       onChange={e=>setPrice(Number(e.target.value))}
       />
-<Form.Control placeholder type='file' placeholder='enter image'
+  <Form.Control placeholder type='file' placeholder='enter image'
       onChange={selectFile}/>
 
-<button type="button" className="btn btn-primary"
+  <button type="button" className="btn btn-primary"
        onClick={addInfo}>add characteristic</button>
-{info.map(el => <Row className='mt-2' key={el.namber}>
-<Col md={4}><Form.Control placeholder='enter name'
-   value={el.title}
-   onChange={(e)=>changeInfo('title', e.target.value, el.number)}/>
-</Col>
-<Col md={4}><Form.Control placeholder='enter description'
-  value={el.description}
-  onChange={(e)=>changeInfo('description', e.target.value, el.number)}/>
-</Col>
-<Col md={4}>
-    <Button variant={'outline-danger'}
-    onClick={() => deleteInfo(el.number)}>delete</Button>
-</Col>
+  {info.map(el =>
+  <Row className='mt-2' key={el.namber}>
+    <Col md={4}><Form.Control placeholder='enter name'
+      value={el.title}
+      onChange={(e)=>changeInfo('title', e.target.value, el.number)}/>
+    </Col>
+    <Col md={4}><Form.Control placeholder='enter description'
+      value={el.description}
+      onChange={(e)=>changeInfo('description', e.target.value, el.number)}/>
+    </Col>
+    <Col md={4}>
+      <Button variant={'outline-danger'}
+      onClick={() => deleteInfo(el.number)}>delete</Button>
+    </Col>
   </Row>
 )}
-</Form>
-</Modal.Body>
-<Modal.Footer>
-  <button type="button" className="btn btn-primary"
-   data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-   onClick={()=>delete_Type(device.selectedType.id)}
-   >Delete Type
-  </button>
-  <button type="button" className="btn btn-primary"
-   data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-   onClick={()=>delete_Brand(device.selectedBrand.id)}
-   >Delete Brand
-  </button>
-  <button type="button" className="btn btn-secondary"
-  onClick={onHide}>Close
-  </button>
-  <button type="button" className="btn btn-primary"
-          onClick={addDevice}>Add Device
-  </button>
-</Modal.Footer>
+  </Form>
+ </Modal.Body>
+ <Modal.Footer>
+   <button type="button" className="btn btn-primary"
+    data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+    onClick={()=>delete_Type(device.selectedType.id)}>Delete Type
+   </button>
+   <button type="button" className="btn btn-primary"
+    data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+    onClick={()=>delete_Brand(device.selectedBrand.id)}>Delete Brand
+   </button>
+   <button type="button" className="btn btn-secondary"onClick={onHide}>
+     Close</button>
+   <button type="button" className="btn btn-primary"
+          onClick={addDevice}>Add Device</button>
+ </Modal.Footer>
 </Modal>
 );
 })

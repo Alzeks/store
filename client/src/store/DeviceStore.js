@@ -17,14 +17,14 @@ export default class DeviceStore{
       {id: 6, name: 'lg'}
     ]
     this._devices = [
-      {id: 1, name: 'iphon 12', price: 350, rating: 5, img: 'https://klike.net/uploads/posts/2020-07/1594278030_1.jpg'},
-      {id: 2, name: 'iphon 12', price: 450, rating: 5, img: 'https://klike.net/uploads/posts/2020-07/1594278030_1.jpg'},
-      {id: 3, name: 'iphon 12', price: 550, rating: 5, img: 'https://klike.net/uploads/posts/2020-07/1594278030_1.jpg'},
-      {id: 4, name: 'iphon 12', price: 650, rating: 5, img: 'https://klike.net/uploads/posts/2020-07/1594278030_1.jpg'},
-      {id: 5, name: 'iphon 12', price: 750, rating: 5, img: 'https://klike.net/uploads/posts/2020-07/1594278030_1.jpg'},
-      {id: 6, name: 'iphon 12', price: 850, rating: 5, img: 'https://klike.net/uploads/posts/2020-07/1594278030_1.jpg'},
-      {id: 7, name: 'iphon 12', price: 950, rating: 5, img: 'https://klike.net/uploads/posts/2020-07/1594278030_1.jpg'},
-      {id: 8, name: 'iphon 12', price: 950, rating: 5, img: 'https://klike.net/uploads/posts/2020-07/1594278030_1.jpg'}
+      // {id: 1, name: 'iphon 12', price: 350, rating: 5, img: ''},
+      // {id: 2, name: 'iphon 12', price: 450, rating: 5, img: 'https://klike.net/uploads/posts/2020-07/1594278030_1.jpg'},
+      // {id: 3, name: 'iphon 12', price: 550, rating: 5, img: 'https://klike.net/uploads/posts/2020-07/1594278030_1.jpg'},
+      // {id: 4, name: 'iphon 12', price: 650, rating: 5, img: 'https://klike.net/uploads/posts/2020-07/1594278030_1.jpg'},
+      // {id: 5, name: 'iphon 12', price: 750, rating: 5, img: 'https://klike.net/uploads/posts/2020-07/1594278030_1.jpg'},
+      // {id: 6, name: 'iphon 12', price: 850, rating: 5, img: 'https://klike.net/uploads/posts/2020-07/1594278030_1.jpg'},
+      // {id: 7, name: 'iphon 12', price: 950, rating: 5, img: 'https://klike.net/uploads/posts/2020-07/1594278030_1.jpg'},
+      // {id: 8, name: 'iphon 12', price: 850, rating: 5, img: 'https://klike.net/uploads/posts/2020-07/1594278030_1.jpg'},
     ]
     this._selectedType={}
     this._selectedBrand={}

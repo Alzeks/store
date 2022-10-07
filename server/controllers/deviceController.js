@@ -18,10 +18,10 @@ if(!name || !price || !req.files || !typeId || !brandId
    let fileName = uuid.v4() + '.PNG'
    img.mv(path.resolve(__dirname, '..', 'static', fileName) )
 
- const device = await Device.create(
+  const device = await Device.create(
    {name, price, brandId, typeId, img: fileName});
 
-  if(info){console.log(6);
+  if(info){
     const info1 = JSON.parse(info)
     info1.forEach(i =>  DeviceInfo.create({
     title: i.title,
@@ -36,7 +36,7 @@ if(!name || !price || !req.files || !typeId || !brandId
 
    async getALL(req, res, next){
        let {brandId, typeId, limit, page} = req.query
-       console.log(brandId, typeId);
+       console.log('getAll',brandId, typeId);
         page = page || 1
         limit = limit || 20
         let offset = page * limit - limit
@@ -56,9 +56,8 @@ if(!name || !price || !req.files || !typeId || !brandId
       devices = await Device.findAll({where: {typeId}, limit, offset})
         }
         return res.json(devices)
-  // const devices = await Device.findAll()
-  // return res.json(devices)
     }
+
     async getOne(req, res, next){
       const {id} = req.params
       console.log({id})
@@ -72,12 +71,9 @@ if(!name || !price || !req.files || !typeId || !brandId
     }
 
   async deleteOne(req, res){console.log('deleteOne');
-      const {id} = req.params
-      console.log(id)
-//const imgDevice = await Device.findOne({where: {id}})
-//console.log(imgDevice);
-//remove(path.resolve(__dirname, '..', 'static', imgDevice.img) )
-//return null
+      const {id, img} = req.params
+      console.log(id, img)
+
   const device = await Device.destroy({where: {id}})
   console.log(device);
   console.log(id)

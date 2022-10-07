@@ -12,23 +12,23 @@ const CreateBrand = ({show, onHide}) => {
   }
 
   return (
-    <Modal show={show} onHide={onHide} size='lg' cantered>
-<Modal.Header closeButton>
+<Modal show={show} onHide={onHide} size='lg' cantered>
+  <Modal.Header closeButton>
       <Modal.Title className='justify-content-center'
          >add brand
       </Modal.Title>
-</Modal.Header>
-<Modal.Body>
+  </Modal.Header>
+  <Modal.Body>
     <Form>
      <Form.Control value={value} onChange={e=>setValue(e.target.value)}/>
     </Form>
-</Modal.Body>
-<Modal.Footer>
-  <button type="button" className="btn btn-secondary"
-     onClick={onHide}>Close</button>
-  <button type="button" className="btn btn-primary"
-     onClick={addBrand} >Add brand</button>
-</Modal.Footer>
+  </Modal.Body>
+  <Modal.Footer>
+     <button type="button" className="btn btn-secondary"onClick={onHide}>Close
+     </button>
+     <button type="button" className="btn btn-primary"onClick={addBrand} >Add brand
+     </button>
+  </Modal.Footer>
 </Modal>
 );
 }

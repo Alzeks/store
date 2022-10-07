@@ -1,18 +1,21 @@
+
+
 const jwt = require('jsonwebtoken')
 const ApiError = require('../error/ApiError')
 
-module.exports = function(req, res, next){
-  if(req.method === 'OPTIONS'){next()}
-  try{//console.log(req.headers.authorization);
-const token = req.headers.authorization.split(' ')[1]//.split('.')[1] //bearer
-//const token = req.headers.authorization.replace('Bearer', '')
-console.log(token);
-  if(!token){res.status(401).json('no token')}
-  console.log(process.env.SECRET_KEY)
-const decoded = jwt.verify(token, process.env.SECRET_KEY)
-//const decoded = 'ok'
-console.log('pass middleware');
-req.user = decoded
-next();
-}catch(e){res.status(401).json('no authorised2')}
+module.exports = (req, res, next) => {
+    if (req.method === 'OPTIONS') {
+       return next()
+    }
+    try {
+        const token = req.headers.authorization.split(' ')[1]
+        if (!token) { console.log(' no token');
+            return res.status(401).json({message: 'Auth error'})
+        }
+        const decoded = jwt.verify(token, process.env.SECRET_KEY)
+        req.user = decoded
+        next()
+    } catch (e) {console.log(e);
+        return res.status(401).json({message: 'Auth error'})
+    }
 }

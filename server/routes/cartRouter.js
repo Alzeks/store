@@ -1,10 +1,11 @@
 const Router = require('express')
 const router = new Router()
 const CartController = require('../controllers/cartController')
+const authMiddleware = require('../middleware/authMiddleware')
 
- router.post('/', CartController.create)
- router.get('/', CartController.getALL)
+ router.post('/', authMiddleware, CartController.create)
+ router.get('/', authMiddleware, CartController.getALL)
  router.put('/', CartController.countDevice)
- router.delete('/:id', CartController.deleteOne)
+ router.delete('/:id', authMiddleware, CartController.deleteOne)
 
 module.exports = router

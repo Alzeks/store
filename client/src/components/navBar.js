@@ -16,11 +16,11 @@ const NavBar = observer(() => {
   useEffect(()=>{
  fetchCartDevices().then(data=>device.setBasketCount(data.length))
 }, [])
-
+console.log(user.isAuth);
   return (
-    <Navbar bg="dark" variant="dark" >
-    <Container style={{width: '800px'}}>
-<Link style={{color: 'white'}} to='/'
+<Navbar bg="dark" variant="dark" >
+  <Container style={{width: '800px'}}>
+   <Link style={{color: 'white'}} to='/'
       className={'text-decoration-none ms-4'} >Home
       </Link>
 
@@ -28,32 +28,32 @@ const NavBar = observer(() => {
       <Nav className={'d-flex justify-content-center align-item-center'}>
       { user.isAuth ? <div >
 
-  <Link style={{color: 'white'}} to={ADMIN_ROUTE}
+   <Link style={{color: 'white'}} to={ADMIN_ROUTE}
         className={'text-decoration-none'}>Admin
         </Link>
-  <Link to={BASKET_ROUTE} style={{color: 'white'}}
+   <Link to={BASKET_ROUTE} style={{color: 'white'}}
        className={'text-decoration-none m-3' }>
        <img width={30} src='/cart.png'
        />{device.basketCount}
        </Link>
 
-  <Button onClick={() => user.setIsAuth(false)}
+   <Button onClick={() => user.setIsAuth(false)}
       className={'bg-blue me-4'}
         > Exit</Button>
         </div> :
         <div>
-  <Link to={REGISTRATION_ROUTE} style={{color: 'white'}}
+   <Link to={REGISTRATION_ROUTE} style={{color: 'white'}}
         className={'text-decoration-none me-4'}
         > ENTER</Link>
-  <Link to={BASKET_ROUTE}style={{color: 'white'}}
+   <Link to={BASKET_ROUTE}style={{color: 'white'}}
         className={'text-decoration-none'}
         >  BASKET: {device.basketCount}
-  </Link>
+   </Link>
         </div>
       }
-      </Nav>
-</Container>
-    </Navbar>
+   </Nav>
+ </Container>
+</Navbar>
 );
 })
 export default NavBar;

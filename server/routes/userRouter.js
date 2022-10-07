@@ -4,13 +4,9 @@ const UserController = require('../controllers/userController')
 const authMiddleware = require('../middleware/authMiddleware')
 
 router.post('/registration', UserController.registration)
-router.post('/login', UserController.login)
-router.get('/auth', authMiddleware,
-UserController.check)
-// (req, res)=>{
-//   res.json('user/auth work')
-// }
-router.get('/registration', UserController.getAll)
+router.post('/login',  UserController.login)
+router.get('/auth', authMiddleware, UserController.checkAuth)
+router.get('/registration', UserController.getAll)//for admin
 
 
 module.exports = router

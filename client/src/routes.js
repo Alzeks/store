@@ -1,12 +1,16 @@
 import Admin from './pages/admin'
 import Basket from './pages/basket'
-import Shop from './pages/shop'
+import MainPage from './pages/mainPage/MainPage'
 import Auth from './pages/Auth'
-import DevicePage from './pages/devicePage'
-import {ADMIN_ROUTE, BASKET_ROUTE, SHOP_ROUTE,LOGIN_ROUTE,
+import DevicePage from './pages/Device'
+import {ADMIN_ROUTE, BASKET_ROUTE, MAIN_ROUTE,LOGIN_ROUTE,
 REGISTRATION_ROUTE, DEVICE_ROUTE, NOTFOUND_ROUTE} from './utils/const'
 
 export const authRoutes = [
+  {
+    path: MAIN_ROUTE,
+    Component: <MainPage/>
+  },
 {
   path: ADMIN_ROUTE,
   Component: <Admin/>
@@ -14,12 +18,16 @@ export const authRoutes = [
 {
   path: BASKET_ROUTE,
   Component: <Basket/>
+},
+{
+  path: DEVICE_ROUTE + '/:id',
+  Component: <DevicePage/>
 }
 ]
 export const pablicRoutes = [
   {
-    path: SHOP_ROUTE,
-    Component: <Shop/>
+    path: MAIN_ROUTE,
+    Component: <MainPage/>
   },
   {
     path: LOGIN_ROUTE,
@@ -35,6 +43,6 @@ export const pablicRoutes = [
   },
   {
     path: NOTFOUND_ROUTE ,
-    Component: <Shop/>
+    Component: <MainPage/>
   }
 ]
