@@ -3,8 +3,9 @@ import Basket from './pages/basket'
 import MainPage from './pages/mainPage/MainPage'
 import Auth from './pages/Auth'
 import DevicePage from './pages/Device'
+import User from './pages/User'
 import {ADMIN_ROUTE, BASKET_ROUTE, MAIN_ROUTE,LOGIN_ROUTE,
-REGISTRATION_ROUTE, DEVICE_ROUTE, NOTFOUND_ROUTE} from './utils/const'
+REGISTRATION_ROUTE, DEVICE_ROUTE, NOTFOUND_ROUTE, USER_ROUTE} from './utils/const'
 
 export const authRoutes = [
   {
@@ -22,6 +23,14 @@ export const authRoutes = [
 {
   path: DEVICE_ROUTE + '/:id',
   Component: <DevicePage/>
+},
+{
+  path: USER_ROUTE,
+  Component: <User/>
+},
+{
+  path: NOTFOUND_ROUTE ,
+  Component: <MainPage/>
 }
 ]
 export const pablicRoutes = [

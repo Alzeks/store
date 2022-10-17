@@ -9,34 +9,33 @@ import {LOGIN_ROUTE, REGISTRATION_ROUTE} from '../utils/const'
 
 
 const Auth = observer( () => {
-const location = useLocation()
-const isLogin = location.pathname === LOGIN_ROUTE
-const {token, setToken} = useState(null)
-console.log(isLogin);
-const {user} = useContext(Context)
- let navigate = useNavigate();
- const [email, setEmail] = useState('')
- const [password, setPassword] = useState('')
- const [existingUser, setExistingUser] = useState()
+  const location = useLocation()
+  const isLogin = location.pathname === LOGIN_ROUTE
+  const {token, setToken} = useState(null)
+  const {user} = useContext(Context)
+  let navigate = useNavigate();
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [message, setMessage] = useState()
 
    const click = async () => {
      try{
         let data;
         if(isLogin){
         data = await login(email, password)
-         if(data == 'no such user')
-         return setExistingUser(0)
+         if(data.message)
+         return setMessage(data.message)
         }
          else{
           data = await registration(email, password)
-           if(data == 'exist')
-           return setExistingUser(1)
+           if(data.message)
+           return setMessage(data.message)
          }console.log(data);
-            localStorage.setItem('token', data.token)
+           localStorage.setItem('token', data.token)
+            user.setUser(data.user)
             user.setIsAuth(true)
-            console.log(user.getIsAuth);
-            navigate('/')
-          }catch(e) {}//{alert(e)} //alert(e.response.data.message)
+            navigate('/')//history.push('/')
+          }catch(e){alert(e.response.data.message)}
           }
 
   return (
@@ -48,26 +47,26 @@ const {user} = useContext(Context)
     <Form className='d-flex flex-column' style={{width: 400}}
     >
       <div className={'text-danger'}>
-          {existingUser === 0  ? 'no such user' : ''}
-          {existingUser === 1 ? 'user exist' : ''}</div>
+          {message  ? message : ''}
+          </div>
      <Form.Control className='mt-2' placeholder='enter email'
           value={email} onChange={e => setEmail(e.target.value)}
-          onFocus={()=>setExistingUser(null)}
+          onFocus={()=>setMessage(null)}
      />
      <Form.Control className='mt-2' placeholder='enter password' type='password'
           value={password} onChange={e => setPassword(e.target.value)}/>
      </Form>
-     <Row className='mt-1 d-flex '>
+     <Row className='mt-0 d-flex justify-content-between ' >
          {isLogin ?
-         <div className='d-flex justify-content-space-between align-items-center'>
+         <div className='d-flex align-items-center'>
                not registration?-
             <Link to={REGISTRATION_ROUTE} className={'text-decoration-none'}
               > get registration </Link>
           <Button  variant={"outline-success"} onClick={click}
-               className='m-2'>Sign in</Button>
+               className='m-1 align-self-end'>Sign in</Button>
         </div> :
         <div>registrated?-
-            <Link to={LOGIN_ROUTE} className={'text-decoration-none'}> get auth
+            <Link to={LOGIN_ROUTE} className={'text-decoration-none'}> get authorization
             </Link>
             <Button  variant={"outline-success"} onClick={click}
                    className='m-2'>registration</Button>

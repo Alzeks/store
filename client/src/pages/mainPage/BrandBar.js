@@ -10,18 +10,18 @@ const BrandBar = observer( () => {
   //const skip = () => {device.setSelectedBrand(0)}
 
   return (
-<Row className='d-flex mt-3'>
-  <div >Brands</div>
+<div className=' row d-flex mt-3'>
+    <div >Brands</div>
   {device.brands.map(brand =>
- <div key={brand.id}>
-    <Card className='p-1' style={{cursor: 'pointer', maxWidth: '200px'}}
+   <div key={brand.id}>
+    <div className='card p-1' style={{cursor: 'pointer', maxWidth: '200px'}}
        onClick={() => device.setSelectedBrand(brand)}
        border={brand.id === device.selectedBrand.id ?  'danger' : 'light'}
        >
      {brand.name}
-    </Card>
- </div> )}
-</Row>
+     </div>
+   </div> )}
+</div>
 );
 })
 export default BrandBar;

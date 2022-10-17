@@ -6,7 +6,7 @@ export const registration = async (email, password) => {
   const {data} = await $host.post('api/user/registration',
   {email, password, role: 'ADMIN'})
   if(!data.token) return data
-  localStorage.setItem('token', data.token)
+  //localStorage.setItem('token', data.token)
   return jwt_decode(data.token)
 }
 
@@ -22,5 +22,20 @@ export const checkAuth = async () => {
   // {headers:{Authorization:`Bearer ${localStorage.getItem('token')}`}}
   // )
   localStorage.setItem('token', data.token)
+  return data
+}
+
+export const fetchUsers = async () => {
+  const {data} = await $host.get('api/user/registration')
+  return data
+}
+
+export const getUser = async (id) => {console.log(id);
+  const {data} = await $host.get('api/user/registration/' + id)
+  return data
+}
+
+export const deleteUser = async (id) => {
+  const {data} = await $host.delete('api/user/registration/' + id)
   return data
 }

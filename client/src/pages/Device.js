@@ -9,12 +9,12 @@ import { fetchOneDevice, deleteDevice} from '../API/DeviceApi'
 const Device = observer(() => {
 
     const  {device} = useContext(Context)
-    const description = [
-      {id: 1, title: 'title1', description: 'no server'},
-      {id: 2, title: 'title2', description: 'npm run dev'},
-      {id: 3, title: 'title1', description: ' or no internet'},
-      {id: 4, title: 'title2', description: 'npm run dev'},
-    ]
+    // const description = [
+    //   {id: 1, title: 'title1', description: 'no server'},
+    //   {id: 2, title: 'title2', description: 'npm run dev'},
+    //   {id: 3, title: 'title1', description: ' or no internet'},
+    //   {id: 4, title: 'title2', description: 'npm run dev'},
+    // ]
     const [data, setData] = useState()
     const [conformDelete, setConformDelete] = useState()
     const [thisDevice, setThisDevice] = useState(

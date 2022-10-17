@@ -4,8 +4,8 @@ export const createCartDevice = async (device) => {
   const {data} = await $authHost.post('api/cart', device)
   return data
 }
-export const fetchCartDevices = async () => {
-  const {data} = await $authHost.get('api/cart')
+export const fetchCartDevices = async (id) => {
+  const {data} = await $authHost.get('api/cart', {id: id})
   return data
 }
 export const deleteDevice = async (id) => {console.log(id);

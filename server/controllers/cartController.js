@@ -22,6 +22,7 @@ try{console.log('count',count);
   }
 
   async getALL(req, res, next){
+    const {id} = req.body; console.log(id);
   try{ const devices = await BasketDevice.findAll()
        return res.json(devices);
   }catch (e){ next(ApiError.internal(e.message))}

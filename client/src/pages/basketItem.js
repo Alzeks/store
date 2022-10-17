@@ -5,7 +5,6 @@ import {Row, Button, Card, Image, Col, Container} from 'react-bootstrap'
 import {countDevice, deleteDevice} from '../API/cartApi'
 import {useNavigate } from "react-router-dom";
 import {DEVICE_ROUTE} from '../utils/const';
-
 const BasketItem = ({device1, changeTotalCount}) => {
 const {device} = useContext(Context)
 const  [count, setCount] = useState(device1.count)
@@ -26,7 +25,7 @@ const count_Device = (id, count) => {
 }
  return (
 <div>{destroyDevice ||
-<Card >
+<Card style={{width: ' 900px'}}>
   <Row >
     <Col md={5} className={'mt-2'}>
       <Image  width={150} height={180} style={{cursor: 'pointer'}}

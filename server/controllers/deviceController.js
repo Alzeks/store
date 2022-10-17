@@ -36,7 +36,6 @@ if(!name || !price || !req.files || !typeId || !brandId
 
    async getALL(req, res, next){
        let {brandId, typeId, limit, page} = req.query
-       console.log('getAll',brandId, typeId);
         page = page || 1
         limit = limit || 20
         let offset = page * limit - limit
@@ -60,7 +59,6 @@ if(!name || !price || !req.files || !typeId || !brandId
 
     async getOne(req, res, next){
       const {id} = req.params
-      console.log({id})
       const device = await Device.findOne(
     {where: {id},
     include: [{model: DeviceInfo,  as: 'info'},
@@ -75,8 +73,6 @@ if(!name || !price || !req.files || !typeId || !brandId
       console.log(id, img)
 
   const device = await Device.destroy({where: {id}})
-  console.log(device);
-  console.log(id)
       const deviceId = id
   const info = await DeviceInfo.findOne({where: {deviceId}})
        if(info){DeviceInfo.destroy({where: {deviceId}})

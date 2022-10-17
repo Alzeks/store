@@ -11,10 +11,14 @@ const AppRouter = observer( () => {
   const {user} = useContext(Context)
 
   useEffect(() => {
-  checkAuth().then(data => {
-    user.setIsAuth(true)
-    localStorage.setItem('token', data.token)
- })
+  checkAuth().then(data => {console.log(data);
+    if(data.token){user.setUser(data.user);console.log(user.user);
+     user.setIsAuth(true);
+     //localStorage.setItem('token', data.token)
+  }
+  else{  user.setIsAuth(false)
+     localStorage.setItem('')}
+ }).finally(()=>{alert('check')}) 
 }, [])
 
   return (
